@@ -5,4 +5,8 @@ const insert = (data) => {
   return user.save();
 };
 
-module.exports = insert;
+const loginUser = (loginData) => {
+  return User.findOne(loginData);
+};
+
+module.exports = { insert, loginUser };
