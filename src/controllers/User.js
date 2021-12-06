@@ -38,4 +38,8 @@ const login = (req, res) => {
     .catch((e) => res.status(httpStatus.INTERNAL_SERVER_ERROR).send(e));
 };
 
-module.exports = { create, login };
+const getUser = (req, res) => {
+  res.json(req.user);
+};
+
+module.exports = { create, login, getUser };
