@@ -25,4 +25,9 @@ db.factoriesList = require("../models/postgres/FactoriesList")(
   Sequelize
 );
 
+db.factoriesName = require("../models/postgres/FactoriesName")(
+  sequelize,
+  Sequelize
+);
+
 module.exports = db;
