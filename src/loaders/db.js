@@ -4,16 +4,21 @@ require("dotenv").config();
 const db = Mongoose.connection;
 
 db.once("open", () => {
-  console.log("Database connection was successfully.");
+  console.log("MongoDB connection was successfully.");
 });
 
-const connectDB = async () => {
-  await Mongoose.connect(process.env.DB_URL, {
+const connectDB = () => {
+  Mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
 };
 
+const sequelize = require("../loaders/postgreDB");
+
+sequelize.sequelize.sync();
+
 module.exports = {
   connectDB,
+  sequelize,
 };
