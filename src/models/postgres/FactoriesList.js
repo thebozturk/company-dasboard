@@ -1,5 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   let FactoriesList = sequelize.define("FactoriesList", {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     factoryName: {
       type: DataTypes.STRING,
     },
