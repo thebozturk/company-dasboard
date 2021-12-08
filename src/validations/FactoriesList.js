@@ -7,4 +7,12 @@ const createValidation = Joi.object({
   numberOfEmployees: Joi.number().required(),
   specialMember: Joi.boolean().required(),
 });
-module.exports = { createValidation };
+
+const updateValidation = Joi.object({
+  factoryName: Joi.string().required().min(3),
+  membershipDate: Joi.date().required(),
+  membershipExpirationDate: Joi.date().required(),
+  numberOfEmployees: Joi.number().required(),
+  specialMember: Joi.boolean().required(),
+});
+module.exports = { createValidation, updateValidation };

@@ -16,4 +16,11 @@ const loginValidation = Joi.object({
   email: Joi.string().email().required().min(8),
 });
 
-module.exports = { createValidation, loginValidation };
+const updateValidation = Joi.object({
+  name: Joi.string().min(3),
+  email: Joi.string()
+    .email({ tlds: { allow: ["com", "net"] } })
+    .required(),
+});
+
+module.exports = { createValidation, loginValidation, updateValidation };
