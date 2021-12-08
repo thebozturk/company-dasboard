@@ -8,4 +8,11 @@ const find = async () => {
   return await db.factoriesList.findAll();
 };
 
-module.exports = { insert, find };
+const modify = async (data, id) => {
+  return await db.factoriesList.update(data, { where: { id: id } });
+};
+const deleteById = async (id) => {
+  return db.factoriesList.destroy({ where: { id: id } });
+};
+
+module.exports = { insert, find, modify, deleteById };
