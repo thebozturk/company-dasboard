@@ -4,7 +4,7 @@ const {
   generateAccessToken,
   generateRefreshToken,
 } = require("../scripts/helper");
-const { insert, loginUser } = require("../services/User");
+const { insert, loginUser, modify } = require("../services/User");
 
 const create = (req, res) => {
   req.body.password = passwordToHash(req.body.password);
@@ -42,4 +42,19 @@ const getUser = (req, res) => {
   res.json(req.user);
 };
 
-module.exports = { create, login, getUser };
+const update = (req, res) => {
+  modify({ _id: req.user?._id }, req.body)
+    .then((updateUser) => {
+      res.status(httpStatus.OK).send(updateUser);
+    })
+    .catch((e) =>
+      res
+        .status(httpStatus.INTERNAL_SERVER_ERROR)
+        .send(
+          { error: "A problem occurred during the update process" },
+          console.log(e)
+        )
+    );
+};
+
+module.exports = { create, login, getUser, update };

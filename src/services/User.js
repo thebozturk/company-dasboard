@@ -9,4 +9,8 @@ const loginUser = (loginData) => {
   return User.findOne(loginData);
 };
 
-module.exports = { insert, loginUser };
+const modify = (where, data) => {
+  return User.findOneAndUpdate(where, data, { new: true });
+};
+
+module.exports = { insert, loginUser, modify };
