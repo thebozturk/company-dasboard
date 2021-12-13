@@ -1,9 +1,21 @@
 const httpStatus = require("http-status");
 const JWT = require("jsonwebtoken");
 
+function parseCookies(request) {
+  var list = {},
+    rc = request.headers.cookie;
+
+  rc &&
+    rc.split(";").forEach(function (cookie) {
+      var parts = cookie.split("=");
+      list[parts.shift().trim()] = decodeURI(parts.join("="));
+    });
+
+  return list;
+}
+
 const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers["authorization"];
-  const token = req.headers?.authorization?.split(" ")[1] || null;
+  const token = parseCookies(req)["authorization"];
   if (token === null)
     return res
       .status(httpStatus.UNAUTHORIZED)
