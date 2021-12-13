@@ -9,6 +9,7 @@ const createValidation = Joi.object({
   email: Joi.string()
     .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
     .required(),
+  role: Joi.required(),
 });
 
 const loginValidation = Joi.object({

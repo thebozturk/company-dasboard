@@ -13,9 +13,10 @@ const UserSchema = new Mongoose.Schema({
     type: String,
     unique: true,
   },
-  isAdmin: {
-    type: Boolean,
-    default: false,
+  role: {
+    type: String,
+    enum: ["admin", "editor"],
+    required: true,
   },
 });
 
