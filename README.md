@@ -7,3 +7,14 @@
 <li>PostgreSQL</li>
 <li>MongoDB</li>
 <br>
+
+<br>
+**Installation**
+
+ `$ git clone https://github.com/thebozturk/company-dasboard.git`
+
+ `$ cd company-dasboard`
+ 
+ `$ npm install`
+ 
+ `$ npm start`
